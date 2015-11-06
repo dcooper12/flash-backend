@@ -17,8 +17,11 @@ before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @decks = current_user.decks
-  	# @decks = Deck.where(user_id: current_user.id)
+  	# @decks = Deck.all
+    # this will call all decks from all users 
+    # rather than current_user decks
   	render "index.json.jbuilder", status: :ok
+    # render json { render json: @decks }
   end
 
   def show
